@@ -4,8 +4,9 @@ import Box from "@mui/material/Box";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
-import { AppBar, CssBaseline} from "@mui/material";
-import  Container from "@mui/material/Container";
+import { AppBar, CssBaseline } from "@mui/material";
+import Container from "@mui/material/Container";
+import DataFetchingEntryPoint from "./DataFetchingEntryPoint";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -23,12 +24,12 @@ function MyApp() {
         }}
       >
         <Box>
-          <AppBar color="transparent">
+          <AppBar color="inherit">
             <Container
               sx={{
                 display: "flex",
                 alignItems: "center",
-                height: "75px",
+                height: { xs: "50px", md: "75px" },
                 justifyContent: "flex-end",
               }}
             >
@@ -44,9 +45,8 @@ function MyApp() {
             </Container>
           </AppBar>
         </Box>
-        <Container sx={{marginTop: "100px"}}>
-
-          hello
+        <Container sx={{ marginTop: "150px" }}>
+          <DataFetchingEntryPoint />
         </Container>
       </Box>
     </>
@@ -54,7 +54,7 @@ function MyApp() {
 }
 
 function App() {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState("dark");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
